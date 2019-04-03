@@ -1,4 +1,5 @@
 require_relative 'config/environment'
+require 'pry'
 
 class App < Sinatra::Base
   get '/reversename/:name' do
@@ -13,10 +14,12 @@ class App < Sinatra::Base
   get '/say/:number/:phrase' do
     @number = params[:number].to_i
     @phrase = params[:phrase]
-    @phrase * @number
-    # @number.times do
-    #   "#{@phrase}"
-    # end
+    # @phrase * @number
+    total_phrase = String.new
+    @number.times do
+      total_phrase += "#{@phrase}"
+    end
+    total_phrase
   end
 
   get '/say/:word1/:word2/:word3/:word4/:word5' do
